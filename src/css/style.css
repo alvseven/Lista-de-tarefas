@@ -1,0 +1,131 @@
+:root {
+    --primary-font-family: 'Shadows Into Light', cursive;
+    --secondary-font-family: 'Amatic SC', cursive;
+    --yellow: #e9de95;
+    --blue: #ABDCFF;
+    --green: #90F7EC;
+    --pink: #f18aa1;
+    --border-container: 2px solid rgb(73, 73, 73);
+    --background-color: rgb(239, 239, 234);
+}
+
+body {
+    height: 100vh;
+    font-family: var(--primary-font-family);
+    background-color: var(--background-color);
+}
+
+/* Header */
+header {
+    text-align: center;
+    font-family: var(--secondary-font-family);
+    font-weight: 700;
+    font-size: 60px;
+    margin: 10px 0; 
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#input_task, select {
+    font-family: var(--primary-font-family);
+    font-weight: 700;
+    padding: 5px; 
+    border: var(--border-container);
+    border-radius: 5px;
+    font-size: 25px;
+    margin: 5px 0;
+}
+
+#input_task {
+    width: 250px;
+}
+
+#add_task {
+    font-family: var(--primary-font-family);
+    background-color: #d0c15d;
+    font-weight: 700;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    margin: 5px 0;
+    font-size: 25px;
+}
+
+#add_task:hover {
+    border: var(--border-container);
+}
+
+#tasks_container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px 15px;
+}
+
+#tasks_container section {
+    width: calc(95% / 2);
+    height: 300px;
+    border: var(--border-container);
+    border-radius: 5px;
+    padding: 5px;
+    overflow: auto;
+}
+
+#tasks_container section h3 {
+    text-align: center;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 25px;
+}
+
+
+
+#work_container h3, .btnDelete_work{
+    background-color: var(--green);
+}
+
+#study_container h3, .btnDelete_study{
+    background-color: var(--yellow);
+} 
+
+#health_container h3, .btnDelete_health { 
+    background-color: var(--pink);
+}
+
+#recreation_container h3, .btnDelete_recreation {
+    background-color: var(--blue);
+}
+
+.checkDiv {
+    display: flex;
+}
+
+.btnCheck {
+    border: none;
+    background-color: var(--background-color);
+}
+
+.cardContainer {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 5px;
+}
+
+.btnDelete {
+    border-radius: 50%;
+    border: 2px solid transparent;
+}
+
+.btnDelete:hover {
+    border: var(--border-container);
+}
+
+.btnDelete:active {
+    opacity: 50%;
+}

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./src/css/reset.css">
+    <link rel="stylesheet" href="./src/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Shadows+Into+Light&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/9f34ef6a93.js" crossorigin="anonymous"></script>
+    <title>ToDo List</title>
+</head>
+<body>
+    <header>
+        <h1>TO DO LIST</h1>
+    </header>
+    <main>
+        <form>
+            <input id="input_task" placeholder="Write your task here">
+            <select name="category" id="category">
+                <option selected>Choose a category</option>
+                <option value="work">Work</option>
+                <option value="study">Study</option>
+                <option value="health">Health</option>
+                <option value="recreation">Recreation</option>
+            </select>
+            <button id="add_task">Add Task</button>
+        </form>
+        <section id="tasks_container">
+            <section id="work_container">
+                <h3><i class="far fa-calendar-alt"></i> Work</h3>
+                <div class="task work_tasks" id="work">
+
+                </div>
+            </section>
+
+            <section id="study_container">
+                <h3><i class="fas fa-code"></i> Study</h3>
+                <div class="task study_tasks" id="study">
+
+                </div>
+            </section>
+
+            <section id="health_container">
+                <h3><i class="fas fa-bicycle"></i> Health</h3>
+                <div class="task health_tasks" id="health">
+
+                </div>
+            </section>
+
+            <section id="recreation_container">
+                <h3><i class="fas fa-coffee"></i> Recreation</h3>
+                <div class="task recreation_tasks" id="recreation">
+
+                </div>
+            </section>
+        </section>
+    </main>
+    <script src="./src/js/script.js"></script>
+</body>
+</html>
