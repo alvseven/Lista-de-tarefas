@@ -157,21 +157,31 @@ header h1 {
     cursor: pointer;
 }
 
-table, th, td {
+th, td {
     border: 1px solid rgb(14, 13, 13);
 }
 
 th {
-    text-align: center;
-    padding: 0 auto 0.20rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 24%;
 }
 
 td {
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     width: 24%;
-    height: 5rem;
+    min-height: 8rem;
+    overflow: auto;
+}
+
+tr {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
 }
 
 a {
@@ -206,8 +216,6 @@ table td {
     text-align: center;
 }
 
-@media screen and (min-width: 1025px) {
-    body {
-      background-color: aquamarine;
-    }
+@media screen and (min-width: 1024px) {
+
   }
