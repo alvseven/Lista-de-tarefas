@@ -1,131 +1,213 @@
-:root {
-    --primary-font-family: 'Shadows Into Light', cursive;
-    --secondary-font-family: 'Amatic SC', cursive;
-    --yellow: #e9de95;
-    --blue: #ABDCFF;
-    --green: #90F7EC;
-    --pink: #f18aa1;
-    --border-container: 2px solid rgb(73, 73, 73);
-    --background-color: rgb(239, 239, 234);
-}
+@import url('https://fonts.googleapis.com/css2?family=Kdam+Thmor+Pro&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:wght@300&display=swap');
 
-body {
-    height: 100vh;
-    font-family: var(--primary-font-family);
-    background-color: var(--background-color);
-}
+main {
+    background-color: rgb(181, 192, 209);
+    border-top: 1.5px solid rgb(14, 13, 13);
+    height: 50rem;
+  }
 
-/* Header */
+.principal {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 90%;
+    height: 10rem;
+    padding: 15px;
+    margin: 0 auto ;
+  }
+
 header {
-    text-align: center;
-    font-family: var(--secondary-font-family);
-    font-weight: 700;
-    font-size: 60px;
-    margin: 10px 0; 
+    height: 3.5rem;
+    box-shadow: 0px 4px 40px -20px rgba(0, 0, 0, 0.25);
+
 }
 
-form {
+header h1 {
+    font-family: 'Kdam Thmor Pro', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    text-align: center;
+    padding: 1.25rem;
+}
+
+.tarefa {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 0.3rem;
+    margin-bottom: 1rem;
+}
+
+.tarefa-container {
     display: flex;
     flex-direction: column;
-    align-items: center;
 }
 
-#input_task, select {
-    font-family: var(--primary-font-family);
-    font-weight: 700;
-    padding: 5px; 
-    border: var(--border-container);
-    border-radius: 5px;
-    font-size: 25px;
-    margin: 5px 0;
+.digitar-tarefa {
+    width: 12rem;
+    height: 2rem;
+    font-family: fantasy;
+    background-color: azure;
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    padding: 4px;
 }
 
-#input_task {
-    width: 250px;
+.selecionar-categoria {
+    width: 12rem;
+    height: 35px;
+    background-color: azure;
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    padding: 0.5rem;
 }
 
-#add_task {
-    font-family: var(--primary-font-family);
-    background-color: #d0c15d;
-    font-weight: 700;
-    border: 2px solid transparent;
-    border-radius: 5px;
-    margin: 5px 0;
-    font-size: 25px;
+.add {
+    width: 12rem;
+    height: 2.5rem;
+    font-size: 0.9rem;
+    font-family: fantasy;
+    background-color: #45e0b2;
+    color: #FFFFFF;
+    border: 1px solid rgb(96, 194, 194);
+    cursor: pointer;
+    margin-bottom: 12px
 }
 
-#add_task:hover {
-    border: var(--border-container);
+.hist {
+    width: 12rem;
+    height: 2.5rem;
+    font-size: 0.9rem;
+    font-family: fantasy;
+    background-color: #45e0b2;
+    color: #FFFFFF;
+    border: 1px solid rgb(96, 194, 194);
+    cursor: pointer;
 }
 
-#tasks_container {
+.containers {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    margin: 10px 15px;
+    margin: 25px 15px;
 }
 
-#tasks_container section {
-    width: calc(95% / 2);
-    height: 300px;
-    border: var(--border-container);
-    border-radius: 5px;
-    padding: 5px;
+.container {
+    width: 48%;
+    height: 15rem;
+    text-align: center;
+    margin-bottom: 1rem;
+    background-color: rgb(221, 216, 216);
     overflow: auto;
 }
 
-#tasks_container section h3 {
-    text-align: center;
+.trabalho {
+    height: 30px;
     padding: 5px;
-    border-radius: 5px;
-    font-size: 25px;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 800;
+    background-color: rgb(233, 146, 163);
 }
 
-
-
-#work_container h3, .btnDelete_work{
-    background-color: var(--green);
+.estudo {
+    height: 30px;
+    padding: 5px;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 800;
+    background-color: rgb(236, 191, 75);
 }
 
-#study_container h3, .btnDelete_study{
-    background-color: var(--yellow);
-} 
-
-#health_container h3, .btnDelete_health { 
-    background-color: var(--pink);
+.casa {
+    height: 30px;
+    padding: 5px;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 800;
+    background-color: rgb(243, 146, 77);
 }
 
-#recreation_container h3, .btnDelete_recreation {
-    background-color: var(--blue);
+.lazer {
+    height: 30px;
+    padding: 5px;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 800;
+    background-color:  #ABDCFF;
 }
 
-.checkDiv {
+.lista-tarefas {
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 4px;
 }
 
-.btnCheck {
-    border: none;
-    background-color: var(--background-color);
-}
-
-.cardContainer {
-    width: 100%;
+.paragraph {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-top: 5px;
+    text-align:start;
+    font-family: monospace;
+    text-transform: uppercase;
+    gap: 0.5rem;
 }
 
-.btnDelete {
-    border-radius: 50%;
-    border: 2px solid transparent;
+.btn-complete, .remover-tarefa {
+    text-align: center;
+    align-items: center;
+    border: 1.5px solid transparent;
+    background-color: rgb(221, 216, 216);
+    cursor: pointer;
 }
 
-.btnDelete:hover {
-    border: var(--border-container);
+table, th, td {
+    border: 1px solid rgb(14, 13, 13);
 }
 
-.btnDelete:active {
-    opacity: 50%;
+th {
+    text-align: center;
+    padding: 0 auto 0.20rem;
+    width: 24%;
 }
+
+td {
+    text-align: center;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    width: 24%;
+    height: 5rem;
+}
+
+a {
+    text-decoration: none;
+    font-family: 'Times New Roman', Times, serif;
+    color: #FFFFFF;
+}
+
+table td {
+    color: rgba(61, 199, 130, 0.925);
+}
+
+.remover-do-historico {
+    background-color: rgba(61, 199, 130, 0.925);
+    border: 1px solid transparent;
+    border-radius: 10%;
+    margin: 0.2rem;
+}
+
+.historico h2 {
+    font-size: 1.5rem;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: tomato;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+.historico {
+    margin: 1rem;
+    width: 90%;
+    min-height: 15vh;
+    text-align: center;
+}
+
+@media screen and (min-width: 1025px) {
+    body {
+      background-color: aquamarine;
+    }
+  }

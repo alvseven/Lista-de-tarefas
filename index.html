@@ -1,63 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
     <link rel="stylesheet" href="./src/css/reset.css">
     <link rel="stylesheet" href="./src/css/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Shadows+Into+Light&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/9f34ef6a93.js" crossorigin="anonymous"></script>
-    <title>ToDo List</title>
 </head>
+
 <body>
+
     <header>
-        <h1>TO DO LIST</h1>
+        <h1>LISTA DE TAREFAS<h1>
     </header>
+
     <main>
-        <form>
-            <input id="input_task" placeholder="Write your task here">
-            <select name="category" id="category">
-                <option selected>Choose a category</option>
-                <option value="work">Work</option>
-                <option value="study">Study</option>
-                <option value="health">Health</option>
-                <option value="recreation">Recreation</option>
-            </select>
-            <button id="add_task">Add Task</button>
-        </form>
-        <section id="tasks_container">
-            <section id="work_container">
-                <h3><i class="far fa-calendar-alt"></i> Work</h3>
-                <div class="task work_tasks" id="work">
 
-                </div>
-            </section>
+        <div class="principal">
+            <div class="tarefa">
+                <input class="digitar-tarefa" placeholder="Qual tarefa você deseja fazer?">
+                <select class="selecionar-categoria" name="categoria" id="categoria">
+                    <option selected>Escolha uma categoria</option>
+                    <option value="Trabalho">Trabalho</option>
+                    <option value="Estudo">Estudo</option>
+                    <option value="Casa">Casa</option>
+                    <option value="Lazer">Lazer</option>
+                </select>
+            </div>
 
-            <section id="study_container">
-                <h3><i class="fas fa-code"></i> Study</h3>
-                <div class="task study_tasks" id="study">
+            <div class="adicionar-tarefa">
+                <button class="add">Adicionar tarefa</button>
+            </div>
 
-                </div>
-            </section>
+            <div>
+                <a href="#historico-tarefas">
+                    <button class="hist">Ver histórico</button>
+                </a>
+            </div>
 
-            <section id="health_container">
-                <h3><i class="fas fa-bicycle"></i> Health</h3>
-                <div class="task health_tasks" id="health">
+        </div>
 
-                </div>
-            </section>
+        <div class="tarefas-container">
 
-            <section id="recreation_container">
-                <h3><i class="fas fa-coffee"></i> Recreation</h3>
-                <div class="task recreation_tasks" id="recreation">
+            <ul class="containers">
 
-                </div>
-            </section>
-        </section>
+                <li class="container">
+                    <h2 class="trabalho">Trabalho</h2>
+                    <div class="tarefa-container" id="listaTrabalho">
+                    </div>
+                </li>
+
+                <li class="container">
+                    <h2 class="estudo">Estudo</h2>
+                    <div class="tarefa-container" id="listaEstudo">
+                    </div>
+                </li>
+
+                <li class="container">
+                    <h2 class="casa">Casa</h2>
+                    <div class="tarefa-container" id="listaCasa">
+                    </div>
+                </li>
+
+                <li class="container">
+                    <h2 class="lazer">Lazer</h2>
+                    <div class="tarefa-container" id="listaLazer">
+                    </div>
+                </li>
+
+            </ul>
+
+        </div>
     </main>
-    <script src="./src/js/script.js"></script>
+
+    <div class="historico" id="historico-tarefas">
+        <h2>Histórico de tarefas concluídas</h2>
+        <table>
+            <tr>
+                <th class="tarefa-historico">Tarefa</th>
+                <th class="adicao">Data de adição</th>
+                <th class="conclusao">Data de conclusão</th>
+                <th class="remover-historico">Remover</th>
+            </tr>
+        </table>
+    </div>
+
+    <script src="script.js"></script>
 </body>
+
 </html>
