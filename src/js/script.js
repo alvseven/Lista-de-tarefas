@@ -1,82 +1,172 @@
-let tasks = [];
+let tarefas = []
+let tarefasConcluidas = []
 
-// function card(task) {}
-const card = (task) => {
-    const cardContainer = document.createElement('div')
-    cardContainer.classList.add('cardContainer', 'card')
+function criarCardTarefa (tipo, valor, id) {
 
-    const checkDiv = document.createElement('div')
-    checkDiv.classList.add('checkDiv')
+    const container = document.querySelector(tipo) 
+
+    const divPrincipal = document.createElement("div")
+    const btnComplete  = document.createElement("button")
+    const divParagraph = document.createElement("div")
+    const divButton    = document.createElement("div")
+    const p   = document.createElement("p")
+    const button = document.createElement("button")
+
+    divPrincipal.setAttribute("class", "lista-tarefas")
+    divPrincipal.setAttribute("id", id)
+    divParagraph.setAttribute("class", "paragraph")
+    btnComplete.setAttribute("class", "btn-complete")
+    btnComplete.setAttribute("id", id)
+    button.setAttribute("class", "remover-tarefa")
+    button.setAttribute("id", id)
     
-    const btnCheck = document.createElement('button')
-    btnCheck.classList.add('btnCheck')
-    btnCheck.innerHTML = task.icon // '<i class="fas fa-check-circle"></i>'
+    btnComplete.innerText = "✔️"
+    p.innerText = `${valor}`
+    button.innerText = '❌'
 
-    btnCheck.addEventListener("click", function() {
-        if(btnCheck.innerHTML === '<i class="far fa-circle" aria-hidden="true"></i>') {
-            btnCheck.innerHTML = '<i class="fas fa-check-circle"></i>'
-            task.icon = '<i class="fas fa-check-circle"></i>'
-        } else {
-            btnCheck.innerHTML = '<i class="far fa-circle" ></i>'
-            task.icon = '<i class="far fa-circle" ></i>'
-        }
+    divParagraph.append(btnComplete, p)
+    divButton.append(button)
+    divPrincipal.append(divParagraph, divButton)
+    container.append(divPrincipal)
+
+    button.addEventListener ("click", event => {
+
+        const index = event.target.id
+
+        let newArray = JSON.parse(localStorage.array)
+        newArray.splice(index, 1)
+        localStorage.array = JSON.stringify(newArray)
+        
+        document.querySelector("#listaTrabalho").innerHTML = ''
+        document.querySelector("#listaEstudo").innerHTML = ''
+        document.querySelector("#listaCasa").innerHTML = ''
+        document.querySelector("#listaLazer").innerHTML = ''
+
+        renderizarTarefa()
+
     })
 
-    const h4 = document.createElement('h4')
-    h4.innerText = task.name
+    btnComplete.addEventListener ("click", event => {
 
-    const btnDelete = document.createElement('button')
-    btnDelete.innerText = 'x'
-    btnDelete.classList.add('btnDelete', `btnDelete_${task.category}`)
-    btnDelete.addEventListener("click", function() {
-        console.log(tasks)
-        const indice = tasks.indexOf(task)
-        tasks.splice(indice, 1)
-        renderTask(tasks)
-        console.log(tasks)
-    })
+        const index = event.target.id
 
-    checkDiv.append(btnCheck, h4)
-    cardContainer.append(checkDiv, btnDelete)
+        let newArray = JSON.parse(localStorage.array)
+        const tarefaConcluida = newArray[index]
+        newArray.splice(index, 1)
+        localStorage.array = JSON.stringify(newArray)
+        
+        document.querySelector("#listaTrabalho").innerHTML = ''
+        document.querySelector("#listaEstudo").innerHTML = ''
+        document.querySelector("#listaCasa").innerHTML = ''
+        document.querySelector("#listaLazer").innerHTML = ''
 
-    return cardContainer
+        renderizarTarefa()
+
+        tarefaConcluida.dataConclusao = `${new Date().toLocaleDateString()} às ${new Date().toString().split(" ")[4]}`
+    
+        tarefasConcluidas.push(tarefaConcluida)
+        createHist(tarefaConcluida)
+
+    })    
+
 }
 
-//function createTaskObj() {}
-const createTaskObj = () => {
-    const button = document.querySelector('#add_task')
-    button.addEventListener("click", function(evt) {
-        evt.preventDefault()
+function adicionarTarefa () {
+    const btn = document.querySelector(".add")
+    const input = document.querySelector(".digitar-tarefa")
+    const select = document.querySelector(".selecionar-categoria")
+    btn.addEventListener("click", event => {
 
-        const nameTask = document.querySelector('input').value
-        const category = document.querySelector('select').value
+        document.querySelector("#listaTrabalho").innerHTML = ''
+        document.querySelector("#listaEstudo").innerHTML = ''
+        document.querySelector("#listaCasa").innerHTML = ''
+        document.querySelector("#listaLazer").innerHTML = ''
 
-        if (nameTask != '' && category != 'Choose a category') {
-            const task = {
-                icon: '<i class="far fa-circle"></i>',
-                name: nameTask,
-                category: category,
+        if (localStorage.array) {
+            tarefas = JSON.parse(localStorage.getItem('array'))
+        }
+
+        const tarefa = {
+            nome: input.value,
+            tipo: select.value,
+            dia: new Date().toLocaleDateString(),
+            horario: new Date().toString().split(" ")[4],
+            dataConclusao: ''
+        }
+
+        tarefas.push(tarefa)
+        localStorage.array = JSON.stringify(tarefas)
+        renderizarTarefa ()
+        input.value = ''
+    })
+}
+
+function renderizarTarefa () {
+
+    let array = JSON.parse(localStorage.getItem("array"))
+
+    if (array) {
+        
+        for (let i = 0; i < array.length; i++) {
+
+        if (array[i].tipo === 'Trabalho') {
+        
+        criarCardTarefa('#listaTrabalho', array[i].nome, i)
             }
 
-            tasks.push(task)
-            renderTask(tasks)
-            
-        }
-    })
-}
-createTaskObj()
-
-//function renderTask(arr) {}
-const renderTask = (arr) => {
-    const tasksContainer = document.querySelectorAll(".task")
-    tasksContainer.forEach(function(container) {
-        container.innerHTML = ''
-        arr.forEach(function(tarefa) {
-            if(tarefa.category === container.id) {
-                const cardTarefa = card(tarefa)
-                container.appendChild(cardTarefa)
-            }
-        })
-    })
+        else if (array[i].tipo === 'Estudo') {
+        
+        criarCardTarefa('#listaEstudo', array[i].nome, i)
+            }    
     
+        else if (array[i].tipo === 'Casa') {
+       
+        criarCardTarefa('#listaCasa', array[i].nome, i)
+            } 
+       
+        else if (array[i].tipo === 'Lazer') { 
+
+        criarCardTarefa('#listaLazer', array[i].nome, i)      
+            }
+        }
+    }
 }
+
+function createHist (tarefa) {
+
+    const tabela = document.querySelector("table")
+    const tr     = document.createElement("tr")
+
+    const tdTarefa    = document.createElement("td")
+    const tdAdicao    = document.createElement("td")
+    const tdConclusao = document.createElement("td")
+    const tdRemover   = document.createElement("td")
+    const btn         = document.createElement("button") 
+
+    tr.setAttribute("id", tarefasConcluidas.length)
+    btn.setAttribute("id", tarefasConcluidas.length)
+    btn.setAttribute("class", "remover-do-historico")
+
+    tdTarefa.innerText = tarefa.nome
+    tdAdicao.innerText = `${tarefa.dia} às ${tarefa.horario}`
+    tdConclusao.innerText = tarefa.dataConclusao
+    btn.innerText = 'Remover do histórico'
+
+    tdRemover.append(btn)
+    tr.append(tdTarefa, tdAdicao, tdConclusao, tdRemover)
+    tabela.append(tr)
+
+    btn.addEventListener("click", event => {
+        const idBotao = event.target.id
+        document.getElementById(idBotao).innerHTML = ''
+    })
+
+}
+
+
+
+renderizarTarefa()
+adicionarTarefa ()
+
+
+
